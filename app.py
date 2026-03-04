@@ -34,10 +34,10 @@ st.markdown("""
     .stApp {
         background-image: 
             linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
-            url("https://raw.githubusercontent.com/082912/carbon-footprint-app/main/green.jpeg");
-        background-size: cover;
+            url("https://raw.githubusercontent.com/082912/carbon-footprint-app/main/tech.jpeg");
+        background-size: 100% 100%;
         background-position: center;
-        background-attachment: fixed;
+        background-attachment: scroll;
         background-repeat: no-repeat;
     }
 
