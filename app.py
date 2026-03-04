@@ -31,7 +31,7 @@ st.markdown("""
     }
 
     .stApp {
-        background: linear-gradient(135deg, #0d1f1a, #1a3a2e, #0d2b1f);
+        background: linear-gradient(135deg, #e8f5e9, #f1f8e9, #e0f2f1);
     }
 
     h1 {
@@ -307,7 +307,7 @@ def get_recommendations(fuel_label, transport_label, food_label,
 # MAIN APP UI
 # ─────────────────────────────────────────────────────────────────────────────
 
-st.title("🌍 Carbon Footprint Intelligence")
+st.title("🌐 Carbon Footprint Intelligence")
 st.markdown(
     "<p style='text-align:center; color:#80cbc4; font-size:1.05rem;'>"
     "AI-powered analysis of your personal carbon footprint with actionable sustainability insights."
