@@ -20,7 +20,7 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CUSTOM CSS — Soft green eco-style UI with modern fonts
+# CUSTOM CSS — Background image with light overlay + bright fonts
 # ─────────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -30,56 +30,64 @@ st.markdown("""
         font-family: 'Nunito', sans-serif;
     }
 
-    /* ── Soft green background ── */
+    /* ── Background image with light white overlay ── */
     .stApp {
-        background: linear-gradient(160deg, #f0faf0, #e8f5e9, #f5fdf5);
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+            url("https://raw.githubusercontent.com/082912/carbon-footprint-app/main/green.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
     }
 
-    /* ── Title — Playfair Display, dark green ── */
+    /* ── Title ── */
     h1 {
         font-family: 'Playfair Display', serif !important;
-        color: #1b5e20 !important;
-        -webkit-text-fill-color: #1b5e20 !important;
+        color: #e65100 !important;
+        -webkit-text-fill-color: #e65100 !important;
         font-size: 2.6rem !important;
         font-weight: 700 !important;
         text-align: center;
         letter-spacing: -0.5px;
         padding-bottom: 0.2rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
 
-    /* ── Subheadings — dark green ── */
+    /* ── Subheadings — bright teal ── */
     h2, h3 {
         font-family: 'Nunito', sans-serif !important;
-        color: #2e7d32 !important;
+        color: #00695c !important;
         font-weight: 800 !important;
     }
 
-    /* ── Paragraph text ── */
-    p, li, label {
-        color: #1b5e20 !important;
+    /* ── Body text — deep indigo ── */
+    p, li {
+        color: #1a237e !important;
         font-family: 'Nunito', sans-serif !important;
+        font-weight: 600 !important;
     }
 
-    /* ── Selectbox label ── */
+    /* ── Selectbox label — bright purple ── */
     .stSelectbox label {
-        color: #2e7d32 !important;
+        color: #6a1b9a !important;
         font-weight: 700 !important;
         font-size: 0.95rem !important;
     }
 
     /* ── Selectbox dropdown ── */
     div[data-baseweb="select"] > div {
-        background-color: #ffffff !important;
-        border: 2px solid #66bb6a !important;
+        background-color: rgba(255,255,255,0.92) !important;
+        border: 2px solid #00897b !important;
         border-radius: 12px !important;
-        color: #1b5e20 !important;
+        color: #1a237e !important;
         font-family: 'Nunito', sans-serif !important;
         font-weight: 600 !important;
     }
 
     /* ── Eco Style Button ── */
     .stButton > button {
-        background: linear-gradient(135deg, #2e7d32, #43a047, #66bb6a);
+        background: linear-gradient(135deg, #e65100, #f57c00, #ff9800);
         color: #ffffff !important;
         font-family: 'Nunito', sans-serif !important;
         font-weight: 800 !important;
@@ -90,49 +98,50 @@ st.markdown("""
         width: 100%;
         letter-spacing: 0.5px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.35);
+        box-shadow: 0 4px 15px rgba(230, 81, 0, 0.4);
     }
 
     .stButton > button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
-        background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
+        box-shadow: 0 8px 25px rgba(230, 81, 0, 0.55);
+        background: linear-gradient(135deg, #bf360c, #e65100, #f57c00);
     }
 
     /* ── Recommendation Cards ── */
     .recommend-card {
-        background: #ffffff;
-        border-left: 5px solid #43a047;
+        background: rgba(255,255,255,0.88);
+        border-left: 5px solid #00897b;
         border-radius: 12px;
         padding: 1rem 1.3rem;
         margin: 0.6rem 0;
-        color: #1b5e20 !important;
+        color: #1a237e !important;
         font-size: 0.95rem;
         font-family: 'Nunito', sans-serif;
-        box-shadow: 0 2px 10px rgba(46, 125, 50, 0.1);
+        font-weight: 600;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
     /* ── Divider ── */
     .section-divider {
         border: none;
-        border-top: 2px solid #c8e6c9;
+        border-top: 2px solid #a5d6a7;
         margin: 1.5rem 0;
     }
 
     /* ── Metric labels ── */
     [data-testid="stMetricLabel"] {
-        color: #2e7d32 !important;
+        color: #6a1b9a !important;
         font-weight: 700 !important;
     }
 
     [data-testid="stMetricValue"] {
-        color: #1b5e20 !important;
+        color: #e65100 !important;
         font-weight: 800 !important;
     }
 
     /* ── Progress bar ── */
     .stProgress > div > div {
-        background: linear-gradient(90deg, #43a047, #66bb6a) !important;
+        background: linear-gradient(90deg, #00897b, #26a69a) !important;
         border-radius: 10px !important;
     }
 
@@ -291,7 +300,7 @@ def get_recommendations(fuel_label, transport_label, food_label,
 
 st.title("🌿 Carbon Footprint Intelligence")
 st.markdown(
-    "<p style='text-align:center; color:#388e3c; font-size:1.05rem; font-family:Nunito,sans-serif;'>"
+    "<p style='text-align:center; color:#00695c; font-size:1.05rem; font-weight:700; font-family:Nunito,sans-serif;'>"
     "AI-powered analysis of your personal carbon footprint with actionable sustainability insights."
     "</p>",
     unsafe_allow_html=True
@@ -301,7 +310,7 @@ st.markdown("<hr class='section-divider'>", unsafe_allow_html=True)
 
 st.subheader("📋 Your Lifestyle Profile")
 st.markdown(
-    "<p style='color:#2e7d32;'>Select the options that best describe your daily habits.</p>",
+    "<p style='color:#1a237e; font-weight:700;'>Select the options that best describe your daily habits.</p>",
     unsafe_allow_html=True
 )
 
@@ -389,12 +398,12 @@ if st.button("🌱 Analyse My Carbon Footprint"):
     else:
         st.error(f"🔴 **{tier_label}** — Your carbon footprint is high. Please review the recommendations below to reduce your environmental impact.")
 
-    st.markdown("<p style='color:#2e7d32; font-weight:700; margin-bottom:4px;'>Eco Score Progress (0 = worst, 100 = best)</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#6a1b9a; font-weight:700; margin-bottom:4px;'>Eco Score Progress (0 = worst, 100 = best)</p>", unsafe_allow_html=True)
     st.progress(int(eco_score))
 
     st.markdown("<hr class='section-divider'>", unsafe_allow_html=True)
     st.subheader("🗂️ Your Profile Summary")
-    st.markdown("<p style='color:#2e7d32;'>Here's how your choices mapped to numerical scores used in the prediction:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#1a237e; font-weight:700;'>Here's how your choices mapped to numerical scores used in the prediction:</p>", unsafe_allow_html=True)
 
     summary_col1, summary_col2 = st.columns(2)
     with summary_col1:
@@ -409,7 +418,7 @@ if st.button("🌱 Analyse My Carbon Footprint"):
     st.markdown("<hr class='section-divider'>", unsafe_allow_html=True)
     st.subheader("💡 Personalised Sustainability Recommendations")
     st.markdown(
-        "<p style='color:#2e7d32;'>Based on your specific inputs, here are targeted steps to reduce your carbon footprint:</p>",
+        "<p style='color:#1a237e; font-weight:700;'>Based on your specific inputs, here are targeted steps to reduce your carbon footprint:</p>",
         unsafe_allow_html=True
     )
 
@@ -423,7 +432,7 @@ if st.button("🌱 Analyse My Carbon Footprint"):
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown(
-        "<p style='text-align:center; color:#388e3c; font-size:0.85rem;'>"
+        "<p style='text-align:center; color:#00695c; font-weight:700; font-size:0.9rem;'>"
         "🌍 Every small action counts. Together we can build a sustainable future.<br>"
         "Share your eco score and inspire others around you!"
         "</p>",
@@ -432,7 +441,7 @@ if st.button("🌱 Analyse My Carbon Footprint"):
 
 st.markdown("<hr class='section-divider'>", unsafe_allow_html=True)
 st.markdown(
-    "<p style='text-align:center; color:#388e3c; font-size:0.8rem;'>"
+    "<p style='text-align:center; color:#6a1b9a; font-weight:700; font-size:0.8rem;'>"
     "🌱 AI-Powered Carbon Footprint Intelligence System &nbsp;|&nbsp; Built with Streamlit"
     "</p>",
     unsafe_allow_html=True
