@@ -33,8 +33,8 @@ st.markdown("""
     /* ── Background image with light white overlay ── */
     .stApp {
         background-image: 
-            linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
-            url("https://raw.githubusercontent.com/082912/carbon-footprint-app/main/tech.jpeg");
+            linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)),
+            url("https://raw.githubusercontent.com/082912/carbon-footprint-app/main/green tech.jpeg");
         background-size: 100% 100%;
         background-position: center;
         background-attachment: scroll;
