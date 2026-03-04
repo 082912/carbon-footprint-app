@@ -228,13 +228,13 @@ def calculate_eco_score(carbon_kg):
 
 
 def get_eco_tier(eco_score):
-    if eco_score >= 80:
+    if eco_score >= 95:
         return "🌟 Excellent"
-    elif eco_score >= 60:
+    elif eco_score >= 85:
         return "🌿 Good"
-    elif eco_score >= 40:
+    elif eco_score >= 75:
         return "⚡ Average"
-    elif eco_score >= 20:
+    elif eco_score >= 50:
         return "⚠️ Poor"
     else:
         return "🔴 Critical"
@@ -391,9 +391,9 @@ if st.button("🌱 Analyse My Carbon Footprint"):
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    if eco_score >= 70:
+    if eco_score >= 95:
         st.success(f"✅ **{tier_label}** — You have a low carbon footprint! Your choices are making a real difference for the planet.")
-    elif eco_score >= 40:
+    elif eco_score >= 75:
         st.warning(f"⚡ **{tier_label}** — Your footprint is moderate. Small lifestyle adjustments can significantly improve your impact.")
     else:
         st.error(f"🔴 **{tier_label}** — Your carbon footprint is high. Please review the recommendations below to reduce your environmental impact.")
