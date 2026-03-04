@@ -77,12 +77,38 @@ st.markdown("""
 
     /* ── Selectbox dropdown ── */
     div[data-baseweb="select"] > div {
-        background-color: rgba(255,255,255,0.92) !important;
+        background-color: rgba(255,255,255,0.95) !important;
         border: 2px solid #00897b !important;
         border-radius: 12px !important;
         color: #1a237e !important;
         font-family: 'Nunito', sans-serif !important;
         font-weight: 600 !important;
+    }
+
+    /* Dropdown options list */
+    ul[role="listbox"] {
+        background-color: #ffffff !important;
+        border: 2px solid #00897b !important;
+        border-radius: 12px !important;
+    }
+
+    /* Each option */
+    li[role="option"] {
+        background-color: #ffffff !important;
+        color: #1a237e !important;
+        font-weight: 600 !important;
+    }
+
+    /* Hovered option */
+    li[role="option"]:hover {
+        background-color: #e8f5e9 !important;
+        color: #1b5e20 !important;
+    }
+
+    /* Selected option */
+    li[role="option"][aria-selected="true"] {
+        background-color: #c8e6c9 !important;
+        color: #1b5e20 !important;
     }
 
     /* ── Eco Style Button ── */
